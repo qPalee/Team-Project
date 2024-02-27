@@ -1,0 +1,64 @@
+entity Student {
+    studentID Integer
+    firstName String
+    lastName String
+    yearGroup Integer
+    formID Integer
+    profilePicture ImageBlob
+}
+
+entity Teacher {
+    teacherID Integer
+    firstName String
+    lastName String
+    accessRights String
+}
+
+entity Class {
+    classID Integer
+    teacherID Integer
+    classroomID Integer
+    subject String
+    capacity Integer
+}
+
+entity Classroom {
+    classroomID Integer
+    classroomName String
+}
+
+entity Form {
+    formID Integer
+    formName String
+    classRoomID
+    teacherID Integer
+}
+
+entity StudentClass {
+    studentID Integer
+    classID Integer
+}
+
+entity StudentForm {
+    studentID Integer
+    formID Integer
+}
+
+relationship OneToMany {
+    Student to StudentClass
+    Teacher to Class
+    Class to StudentClass
+    Classroom to Class
+    Form to StudentForm
+}
+
+relationship OneToOne {
+    Student to StudentForm
+    Form to Teacher
+    Form to Classroom
+}
+
+
+
+
+
